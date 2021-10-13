@@ -32,6 +32,7 @@ namespace FileSorter
             this.folderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.fileSelectButton = new System.Windows.Forms.Button();
             this.folderInputText = new System.Windows.Forms.TextBox();
+            this.sortButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // fileSelectButton
@@ -51,11 +52,22 @@ namespace FileSorter
             this.folderInputText.Size = new System.Drawing.Size(176, 27);
             this.folderInputText.TabIndex = 1;
             // 
+            // sortButton
+            // 
+            this.sortButton.Location = new System.Drawing.Point(530, 13);
+            this.sortButton.Name = "sortButton";
+            this.sortButton.Size = new System.Drawing.Size(258, 29);
+            this.sortButton.TabIndex = 2;
+            this.sortButton.Text = "SORT!";
+            this.sortButton.UseVisualStyleBackColor = true;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.sortButton);
             this.Controls.Add(this.folderInputText);
             this.Controls.Add(this.fileSelectButton);
             this.Name = "MainWindow";
@@ -70,6 +82,7 @@ namespace FileSorter
         private System.Windows.Forms.FolderBrowserDialog folderSelector;
         private System.Windows.Forms.Button fileSelectButton;
         private System.Windows.Forms.TextBox folderInputText;
+        private System.Windows.Forms.Button sortButton;
     }
 }
 

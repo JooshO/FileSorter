@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FileSorter.FileOperations;
 
 namespace FileSorter
 {
@@ -32,6 +33,14 @@ namespace FileSorter
             {
                 folderInputText.Text = folderSelector.SelectedPath;
             }
+        }
+
+        private void sortButton_Click(object sender, EventArgs e)
+        {
+            string path = folderInputText.Text;
+            System.IO.DirectoryInfo directory = new(path);
+            CreateFolders( CollectFileInformation(directory));
+
         }
     }
 }
