@@ -58,7 +58,7 @@ namespace FileSorter
             this.sortButton.Name = "sortButton";
             this.sortButton.Size = new System.Drawing.Size(258, 29);
             this.sortButton.TabIndex = 2;
-            this.sortButton.Text = "SORT!";
+            this.sortButton.Text = "Generate folders";
             this.sortButton.UseVisualStyleBackColor = true;
             this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 

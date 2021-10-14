@@ -2,7 +2,7 @@
 
 namespace FileSorter
 {
-    class FileOperations
+    public class FileOperations
     {
         /// <summary>
         /// Collects an array of file information based on passed in directory
