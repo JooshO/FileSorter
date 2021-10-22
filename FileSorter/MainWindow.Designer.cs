@@ -33,7 +33,13 @@ namespace FileSorter
             this.fileSelectButton = new System.Windows.Forms.Button();
             this.folderInputText = new System.Windows.Forms.TextBox();
             this.sortButton = new System.Windows.Forms.Button();
+            this.safeTypeText = new System.Windows.Forms.TextBox();
+            this.safeTypeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // folderSelector
+            // 
+            this.folderSelector.HelpRequest += new System.EventHandler(this.folderSelector_HelpRequest);
             // 
             // fileSelectButton
             // 
@@ -51,6 +57,7 @@ namespace FileSorter
             this.folderInputText.Name = "folderInputText";
             this.folderInputText.Size = new System.Drawing.Size(176, 27);
             this.folderInputText.TabIndex = 1;
+            this.folderInputText.TextChanged += new System.EventHandler(this.folderInputText_TextChanged);
             // 
             // sortButton
             // 
@@ -62,16 +69,37 @@ namespace FileSorter
             this.sortButton.UseVisualStyleBackColor = true;
             this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
+            // safeTypeText
+            // 
+            this.safeTypeText.Location = new System.Drawing.Point(136, 67);
+            this.safeTypeText.Name = "safeTypeText";
+            this.safeTypeText.Size = new System.Drawing.Size(348, 27);
+            this.safeTypeText.TabIndex = 3;
+            this.safeTypeText.TextChanged += new System.EventHandler(this.safeTypesText_TextChanged);
+            // 
+            // safeTypeLabel
+            // 
+            this.safeTypeLabel.AutoSize = true;
+            this.safeTypeLabel.Location = new System.Drawing.Point(13, 70);
+            this.safeTypeLabel.Name = "safeTypeLabel";
+            this.safeTypeLabel.Size = new System.Drawing.Size(117, 20);
+            this.safeTypeLabel.TabIndex = 4;
+            this.safeTypeLabel.Text = "Protected Types:";
+            this.safeTypeLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.safeTypeLabel);
+            this.Controls.Add(this.safeTypeText);
             this.Controls.Add(this.sortButton);
             this.Controls.Add(this.folderInputText);
             this.Controls.Add(this.fileSelectButton);
             this.Name = "MainWindow";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +111,8 @@ namespace FileSorter
         private System.Windows.Forms.Button fileSelectButton;
         private System.Windows.Forms.TextBox folderInputText;
         private System.Windows.Forms.Button sortButton;
+        private System.Windows.Forms.TextBox safeTypeText;
+        private System.Windows.Forms.Label safeTypeLabel;
     }
 }
 
