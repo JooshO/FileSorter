@@ -4,5 +4,8 @@
     <Compile Update="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="obj\Component1.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

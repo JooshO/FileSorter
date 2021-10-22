@@ -42,5 +42,35 @@ namespace FileSorter
             CreateFolders( CollectFileInformation(directory));
 
         }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderInputText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void folderSelector_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void safeTypesText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void safeType_button(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
