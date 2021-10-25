@@ -47,7 +47,13 @@ namespace FileSorter
         {
             string path = folderInputText.Text;
             System.IO.DirectoryInfo directory = new(path);
-            CreateFolders( CollectFileInformation(directory));
+            try
+            {
+                CreateFolders(CollectFileInformation(directory));
+            } catch (System.IO.DirectoryNotFoundException)
+            {
+                // TODO let the user know there is an error
+            }
 
         }
 
