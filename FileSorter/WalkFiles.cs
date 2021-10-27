@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace FileSorter
 {
     public class FileOperations
     {
+        /// <summary>
+        /// Enum for methods of locating old files
+        /// </summary>
         public enum FindOldFilesBy
         {
             kLastAccessed, kLastModified, kCreationTime
@@ -40,6 +44,10 @@ namespace FileSorter
 
             return files;
         }
+
+        /************************************************************************************************************************************
+         *  Find "old files". This can only be tested by hand because generated testing folders will have identical time created, mod, etc. *
+         ************************************************************************************************************************************/
 
         /// <summary>
         /// Finds all files "older" than a certain date
