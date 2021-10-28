@@ -59,5 +59,29 @@ namespace FileSorter
                 System.IO.Directory.CreateDirectory(folderPath);
             }
         }
+
+        /// <summary>
+        /// Returns a list of all duplicate files filename
+        /// </summary>
+        /// <param name="files">All files in the main folder</param>
+        public static List<string> FindDuplicates(System.IO.FileInfo[] files)
+        {
+
+            //instantiate duplicate file list
+            List<string> duplicates = new List<string>();
+
+            //search through each file in directory
+            foreach (System.IO.FileInfo file in files)
+            {
+                //if the file has a duplicate file name EX: text(1).txt
+                if ( file.Name.Contains("(") && file.Name.Contains(")") )
+                {
+                    //add filename to the duplicates list
+                    duplicates.Add(file.ToString());
+                
+                }
+            }
+            return duplicates;
+        }
     }
 }
