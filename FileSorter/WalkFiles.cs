@@ -1,9 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace FileSorter
 {
     public class FileOperations
     {
+        /// <summary>
+        /// Enum for methods of locating old files
+        /// </summary>
+        public enum FindOldFilesBy
+        {
+            kLastAccessed, kLastModified, kCreationTime
+        }
+
+
         /// <summary>
         /// Collects an array of file information based on passed in directory
         /// </summary>
@@ -32,6 +43,70 @@ namespace FileSorter
 
 
             return files;
+        }
+
+        /************************************************************************************************************************************
+         *  Find "old files". This can only be tested by hand because generated testing folders will have identical time created, mod, etc. *
+         ************************************************************************************************************************************/
+
+        /// <summary>
+        /// Finds all files "older" than a certain date
+        /// Defaults to last modified
+        /// </summary>
+        /// <param name="files">An array of FileInfos to compare to</param>
+        /// <param name="time">The time to compare</param>
+        public static List<System.IO.FileInfo> FindFilesOlderThan(System.IO.FileInfo[] files, System.DateTime time)
+        {
+            // query our array
+            var queryOldFiles = from file in files
+                                where file.LastWriteTime.CompareTo(time) < 0
+                                select file;
+
+            // convert to a list and return
+            return queryOldFiles.ToList();
+
+        }
+
+        /// <summary>
+        /// Finds all files "older" than a certain date
+        /// </summary>
+        /// <param name="files">An array of FileInfos to compare to</param>
+        /// <param name="time">The time to compare</param>
+        /// <param name="mode">How we want to compare - either by time last modified, last accessed, or time created</param>
+        /// <returns></returns>
+        public static List<System.IO.FileInfo> FindFilesOlderThan(System.IO.FileInfo[] files, System.DateTime time, FindOldFilesBy mode)
+        {
+            // declare the enumerable to store query results
+            IEnumerable<System.IO.FileInfo> queryOldFiles;
+
+            switch (mode)
+            {
+                case FindOldFilesBy.kLastModified:
+                    queryOldFiles = from file in files
+                                    where file.LastWriteTime.CompareTo(time) < 0
+                                    select file;
+                    break;
+                case FindOldFilesBy.kLastAccessed:
+                    queryOldFiles = from file in files
+                                    where file.LastAccessTime.CompareTo(time) < 0
+                                    select file;
+                    break;
+                case FindOldFilesBy.kCreationTime:
+                    queryOldFiles = from file in files
+                                    where file.CreationTime.CompareTo(time) < 0
+                                    select file;
+                    break;
+                // default to time last modified
+                default:
+                    queryOldFiles = from file in files
+                                    where file.LastWriteTime.CompareTo(time) < 0
+                                    select file;
+                    break;
+            }
+
+            // convert to a list and return
+            return queryOldFiles.ToList();
+
         }
 
         /// <summary>
