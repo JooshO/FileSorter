@@ -50,6 +50,7 @@ namespace FileSorter
             try
             {
                 CreateFolders(CollectFileInformation(directory));
+                sortTypes(CollectFileInformation(directory), safeTypeText.Text);
             } catch (System.IO.DirectoryNotFoundException)
             {
                 // TODO let the user know there is an error
@@ -73,11 +74,6 @@ namespace FileSorter
         }
 
         private void safeTypesText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void safeType_button(object sender, EventArgs e)
         {
 
         }
