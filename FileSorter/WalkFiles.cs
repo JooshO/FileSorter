@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
+
 namespace FileSorter
 {
     public class FileOperations
@@ -158,5 +159,74 @@ namespace FileSorter
             }
             return duplicates;
         }
+
+        /// <summary>
+        /// Pushes files to folder organized by type
+        /// </summary>
+        /// <param name="files">All files in the main folder</param>
+        /// <param name="protTypes">Files that are not to be touched</param>
+        public static void sortTypes(System.IO.FileInfo[] files, string protTypes)
+        {
+            //Sort through protected types
+            string[] prot = new string[protTypes.Length / 2];
+            char current = ' ';
+            int j = 0;
+            for (int i = 0; i < protTypes.Length; i++)
+            {
+                current = (char)protTypes[i];
+                //if it is a letter
+                if (current < 123 && current > 64 || current == 46)
+                {
+                    //if needs to be initialized
+                    if (i == 0)
+                    {
+                        prot[j] = char.ToString(current);
+                    }
+                    else 
+                    {
+                        //add character to string
+                        prot[j] += char.ToString(current);
+                    }
+                }
+                else if (current == 32)//if space move to next element for new type
+                {
+                    j++;
+                }
+            }
+
+            // grab the path to the root folder from the first file
+            string pathToRoot = files[0].DirectoryName;
+            //sort through files
+            foreach (System.IO.FileInfo file in files)
+            {
+                //if not a protected type move to file
+                bool canMove = true;
+                //new path
+                string newPath = System.IO.Path.Combine(pathToRoot, System.IO.Path.GetExtension(file.FullName));
+                newPath = System.IO.Path.Combine(newPath, file.Name);
+                int i = 0;
+                //check against protected types
+                while (i < protTypes.Length / 2 && prot[i] != null)
+                {
+                    if (System.IO.Path.GetExtension(file.FullName).CompareTo(prot[i]) == 0)
+                    {
+                        canMove = false;
+                        break;
+                    }
+                    i++;
+                }
+                if (canMove)
+                {
+                    //move file
+                    file.MoveTo(newPath);
+                }
+
+            }
+
+            
+
+        }
+
+        
     }
 }
