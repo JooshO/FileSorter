@@ -100,6 +100,37 @@ namespace FileSorterTest
             Assert.IsTrue(subdirNames.IsSupersetOf(expectedFolders), "Not all expected folders are present");
         }
 
+        [TestMethod]
+        public void TestLongestSubstring1()
+        {
+            List<string> l1 = new() {"City: New York", "City: Los Vegas", "Town: Milan"};
+            Assert.AreEqual("City: ", CommonFileName.LongestSubstring(l1, 2, 2));       // largest substring in two strings of length at least 2
+            Assert.AreEqual(": ", CommonFileName.LongestSubstring(l1, 3, 2));           // in all 3 strings, length at least 3
+            Assert.AreEqual(string.Empty, CommonFileName.LongestSubstring(l1, 3, 3));   // all 3, length at least 3
+        }
+
+        [TestMethod]
+        public void TestLongestSubstring2()
+        {
+            List<string> l1 = new() { 
+                "CS3141 Homework 1.txt",
+                "CS3141 Notes 1.txt", 
+                "CS3141 Notes 2.txt", 
+                "CS3141 Notes 3.txt", 
+                "CS3141Exam.txt", 
+                "CS2321 Exam.txt", 
+                "CS2321 Exam2.txt", 
+                "CS2321 Exam3.txt", 
+            };
+
+            // find largest substring in at least 4 elements
+            Assert.AreEqual("CS3141", CommonFileName.LongestSubstring(l1, 4, 4).Trim());
+
+            // find largest substring minus elements containing the previous substring
+            Assert.AreEqual("CS2321 Exam", CommonFileName.LongestSubstring(l1.Where(s => !s.Contains("CS3141")).ToList(), 3, 4).Trim());
+
+        }
+
         [TestCleanup]
         public void CleanUp()
         {
