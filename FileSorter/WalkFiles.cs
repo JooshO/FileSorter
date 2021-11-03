@@ -107,7 +107,6 @@ namespace FileSorter
 
             // convert to a list and return
             return queryOldFiles.ToList();
-
         }
 
         /// <summary>
@@ -144,7 +143,7 @@ namespace FileSorter
         {
 
             //instantiate duplicate file list
-            List<string> duplicates = new List<string>();
+            List<string> duplicates = new();
 
             //search through each file in directory
             foreach (System.IO.FileInfo file in files)
@@ -153,7 +152,7 @@ namespace FileSorter
                 if ( file.Name.Contains("(") && file.Name.Contains(")") )
                 {
                     //add filename to the duplicates list
-                    duplicates.Add(file.ToString());
+                    duplicates.Add(file.Name);
                 
                 }
             }

@@ -110,6 +110,18 @@ namespace FileSorterTest
         }
 
         [TestMethod]
+        public void TestFindDuplicates()
+        {
+            List<string> output = FileOperations.FindDuplicates(FileOperations.CollectFileInformation(testTarget));
+            var expected = new List<string>() { "EmptyText - Copy (2).txt" };
+            foreach (string s in output)
+            {
+                System.Console.WriteLine(s);
+            }
+            Assert.IsTrue(!expected.Except(output).Any());
+        }
+
+        [TestMethod]
         public void TestLongestSubstring2()
         {
             List<string> l1 = new() { 
