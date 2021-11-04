@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace FileSorter
 {
-    public class FileOperations
+    public static class FileOperations
     {
         /// <summary>
         /// Enum for methods of locating old files
