@@ -136,6 +136,20 @@ namespace FileSorter
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="folders"></param>
+        /// <param name="pathToRoot"></param>
+        public static void CreateFolders(string[] folders, string pathToRoot)
+        {
+            foreach(string str in folders)
+            {
+                string folderPath = System.IO.Path.Combine(pathToRoot, str);
+                System.IO.Directory.CreateDirectory(folderPath);
+            }
+        }
+
+        /// <summary>
         /// Returns a list of all duplicate files filename
         /// </summary>
         /// <param name="files">All files in the main folder</param>
@@ -157,6 +171,23 @@ namespace FileSorter
                 }
             }
             return duplicates;
+        }
+
+        public static int sortCommonNames(System.IO.FileInfo[] files, string folderPath, string commonStr)
+        {
+            int i = 0;
+            //sort through files
+            foreach (System.IO.FileInfo file in files)
+            {
+                if (!file.Name.Contains(commonStr)) continue;
+
+                //new path
+                string newPath = System.IO.Path.Combine(folderPath, file.Name);
+                file.MoveTo(newPath);
+                i++;
+            }
+
+            return i;
         }
 
         /// <summary>

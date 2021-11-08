@@ -19,6 +19,17 @@ namespace FileSorter
                    select word.Substring(charIndex1, charIndex2);
         }
 
+        public static string LongestSubstring(System.IO.FileInfo[] files, int k, int l)
+        {
+            List<string> list = new() { };
+            foreach(System.IO.FileInfo file in files)
+            {
+                list.Add(System.IO.Path.GetFileNameWithoutExtension(file.Name));
+            }
+
+            return LongestSubstring(list, k, l);
+        }
+
         /// <summary>
         /// Returns the longest substring of at least length l present in at least k strings
         /// TODO: This works but it will lead to slowdown later on large lists

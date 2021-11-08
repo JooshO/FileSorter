@@ -32,14 +32,14 @@ namespace FileSorter
         private void fileSelectButton_Click(object sender, EventArgs e)
         {
 
-            
+
 
             // open the folder selection dialog and record the result
             DialogResult result = folderSelector.ShowDialog();
-                       
+
 
             // if we get a valid result, set the folder selection text box to hold the path
-            if ( result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 folderInputText.Text = folderSelector.SelectedPath;
             }
@@ -49,13 +49,40 @@ namespace FileSorter
         {
             string path = folderInputText.Text;
             System.IO.DirectoryInfo directory = new(path);
-            try
+            string val = (string)sortSelector.SelectedItem;
+            var files = CollectFileInformation(directory);
+
+            switch (val)
             {
-                CreateFolders(CollectFileInformation(directory));
-                sortTypes(CollectFileInformation(directory), safeTypeText.Text);
-            } catch (System.IO.DirectoryNotFoundException)
-            {
-                // TODO let the user know there is an error
+                case "File type":
+                    try
+                    {
+                        CreateFolders(files);
+                        sortTypes(files, safeTypeText.Text);
+                    }
+                    catch (System.IO.DirectoryNotFoundException)
+                    {
+                        // TODO let the user know there is an error
+                    }
+                    break;
+                case "Simmilar name":
+                    try
+                    {
+                        var longestSubstr = CommonFileName.LongestSubstring(files, 3, 4);
+                        string folderPath = System.IO.Path.Combine(path, longestSubstr);
+                        System.IO.Directory.CreateDirectory(folderPath);
+                       
+
+                    }
+                    catch (System.IO.DirectoryNotFoundException)
+                    {
+                        // TODO let the user know there is an error
+                    }
+                    break;
+                default:
+                    
+                    break;
+
             }
 
         }
@@ -81,6 +108,11 @@ namespace FileSorter
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sortSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
