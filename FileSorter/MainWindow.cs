@@ -47,10 +47,13 @@ namespace FileSorter
 
         private void sortButton_Click(object sender, EventArgs e)
         {
+            progressBar.Value = 0;
             string path = folderInputText.Text;
             System.IO.DirectoryInfo directory = new(path);
             string val = (string)sortSelector.SelectedItem;
             var files = CollectFileInformation(directory);
+
+            progressBar.Value = 10;
 
             switch (val)
             {
@@ -59,6 +62,7 @@ namespace FileSorter
                     {
                         CreateFolders(files);
                         sortTypes(files, safeTypeText.Text);
+                        progressBar.Value = 100;
                     }
                     catch (System.IO.DirectoryNotFoundException)
                     {
@@ -71,7 +75,8 @@ namespace FileSorter
                         var longestSubstr = CommonFileName.LongestSubstring(files, 3, 4);
                         string folderPath = System.IO.Path.Combine(path, longestSubstr);
                         System.IO.Directory.CreateDirectory(folderPath);
-                       
+                        sortCommonNames(files, folderPath, longestSubstr);
+                        progressBar.Value = 100;
 
                     }
                     catch (System.IO.DirectoryNotFoundException)

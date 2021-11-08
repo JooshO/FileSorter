@@ -37,6 +37,7 @@ namespace FileSorter
             this.safeTypeLabel = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.sortSelector = new System.Windows.Forms.ComboBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // folderSelector
@@ -45,7 +46,7 @@ namespace FileSorter
             // 
             // fileSelectButton
             // 
-            this.fileSelectButton.Location = new System.Drawing.Point(13, 410);
+            this.fileSelectButton.Location = new System.Drawing.Point(10, 367);
             this.fileSelectButton.Name = "fileSelectButton";
             this.fileSelectButton.Size = new System.Drawing.Size(154, 29);
             this.fileSelectButton.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace FileSorter
             // 
             // folderInputText
             // 
-            this.folderInputText.Location = new System.Drawing.Point(173, 410);
+            this.folderInputText.Location = new System.Drawing.Point(170, 367);
             this.folderInputText.Name = "folderInputText";
             this.folderInputText.Size = new System.Drawing.Size(412, 27);
             this.folderInputText.TabIndex = 1;
@@ -63,7 +64,7 @@ namespace FileSorter
             // 
             // sortButton
             // 
-            this.sortButton.Location = new System.Drawing.Point(591, 408);
+            this.sortButton.Location = new System.Drawing.Point(589, 367);
             this.sortButton.Name = "sortButton";
             this.sortButton.Size = new System.Drawing.Size(197, 29);
             this.sortButton.TabIndex = 2;
@@ -73,7 +74,7 @@ namespace FileSorter
             // 
             // safeTypeText
             // 
-            this.safeTypeText.Location = new System.Drawing.Point(145, 367);
+            this.safeTypeText.Location = new System.Drawing.Point(143, 334);
             this.safeTypeText.Name = "safeTypeText";
             this.safeTypeText.Size = new System.Drawing.Size(348, 27);
             this.safeTypeText.TabIndex = 3;
@@ -82,7 +83,7 @@ namespace FileSorter
             // safeTypeLabel
             // 
             this.safeTypeLabel.AutoSize = true;
-            this.safeTypeLabel.Location = new System.Drawing.Point(12, 370);
+            this.safeTypeLabel.Location = new System.Drawing.Point(10, 337);
             this.safeTypeLabel.Name = "safeTypeLabel";
             this.safeTypeLabel.Size = new System.Drawing.Size(117, 20);
             this.safeTypeLabel.TabIndex = 4;
@@ -92,7 +93,7 @@ namespace FileSorter
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(713, 366);
+            this.checkBox1.Location = new System.Drawing.Point(711, 333);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 24);
@@ -112,11 +113,19 @@ namespace FileSorter
             this.sortSelector.TabIndex = 6;
             this.sortSelector.SelectedIndexChanged += new System.EventHandler(this.sortSelector_SelectedIndexChanged);
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(13, 412);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(773, 29);
+            this.progressBar.TabIndex = 7;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.sortSelector);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.safeTypeLabel);
@@ -142,6 +151,7 @@ namespace FileSorter
         private System.Windows.Forms.Label safeTypeLabel;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox sortSelector;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
