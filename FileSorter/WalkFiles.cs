@@ -191,11 +191,12 @@ namespace FileSorter
         }
 
         /// <summary>
-        /// Pushes files to folder organized by type
+        /// Reutnrs array of strings with types to be left untouched
         /// </summary>
         /// <param name="files">All files in the main folder</param>
         /// <param name="protTypes">Files that are not to be touched</param>
-        public static void sortTypes(System.IO.FileInfo[] files, string protTypes)
+        /// <returns> Array of string to be left untouched by file sorter </returns>
+        public static string[] protTypes(System.IO.FileInfo[] files, string protTypes) 
         {
             //Sort through protected types
             string[] prot = new string[protTypes.Length / 2];
@@ -212,7 +213,7 @@ namespace FileSorter
                     {
                         prot[j] = char.ToString(current);
                     }
-                    else 
+                    else
                     {
                         //add character to string
                         prot[j] += char.ToString(current);
@@ -223,6 +224,17 @@ namespace FileSorter
                     j++;
                 }
             }
+            return prot;
+        }
+
+        /// <summary>
+        /// Pushes files to folder organized by type
+        /// </summary>
+        /// <param name="files">All files in the main folder</param>
+        /// <param name="protectedTypes">Files that are not to be touched</param>
+        public static void sortTypes(System.IO.FileInfo[] files, string protectedTypes )
+        {
+            string[] prot = protTypes(files, protectedTypes);
 
             // grab the path to the root folder from the first file
             string pathToRoot = files[0].DirectoryName;
@@ -236,7 +248,7 @@ namespace FileSorter
                 newPath = System.IO.Path.Combine(newPath, file.Name);
                 int i = 0;
                 //check against protected types
-                while (i < protTypes.Length / 2 && prot[i] != null)
+                while (i < protectedTypes.Length / 2 && prot[i] != null)
                 {
                     if (System.IO.Path.GetExtension(file.FullName).CompareTo(prot[i]) == 0)
                     {
