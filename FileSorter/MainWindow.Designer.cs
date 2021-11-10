@@ -38,6 +38,8 @@ namespace FileSorter
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.sortSelector = new System.Windows.Forms.ComboBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fileNameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // folderSelector
@@ -74,7 +76,7 @@ namespace FileSorter
             // 
             // safeTypeText
             // 
-            this.safeTypeText.Location = new System.Drawing.Point(143, 334);
+            this.safeTypeText.Location = new System.Drawing.Point(135, 301);
             this.safeTypeText.Name = "safeTypeText";
             this.safeTypeText.Size = new System.Drawing.Size(348, 27);
             this.safeTypeText.TabIndex = 3;
@@ -83,7 +85,7 @@ namespace FileSorter
             // safeTypeLabel
             // 
             this.safeTypeLabel.AutoSize = true;
-            this.safeTypeLabel.Location = new System.Drawing.Point(10, 337);
+            this.safeTypeLabel.Location = new System.Drawing.Point(12, 301);
             this.safeTypeLabel.Name = "safeTypeLabel";
             this.safeTypeLabel.Size = new System.Drawing.Size(117, 20);
             this.safeTypeLabel.TabIndex = 4;
@@ -120,11 +122,30 @@ namespace FileSorter
             this.progressBar.Size = new System.Drawing.Size(773, 29);
             this.progressBar.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 333);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Names to Sort:";
+            // 
+            // fileNameTextBox
+            // 
+            this.fileNameTextBox.Location = new System.Drawing.Point(135, 334);
+            this.fileNameTextBox.Name = "fileNameTextBox";
+            this.fileNameTextBox.Size = new System.Drawing.Size(348, 27);
+            this.fileNameTextBox.TabIndex = 9;
+            this.fileNameTextBox.TextChanged += new System.EventHandler(this.fileNameTextBox_TextChanged);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.fileNameTextBox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.sortSelector);
             this.Controls.Add(this.checkBox1);
@@ -152,6 +173,8 @@ namespace FileSorter
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox sortSelector;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox fileNameTextBox;
     }
 }
 

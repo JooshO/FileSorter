@@ -121,5 +121,10 @@ namespace FileSorter
         {
 
         }
+
+        private void fileNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
