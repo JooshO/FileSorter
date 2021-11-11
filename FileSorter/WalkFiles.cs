@@ -191,6 +191,41 @@ namespace FileSorter
         }
 
         /// <summary>
+        /// Iterate through specific names text box and return a list of all there
+        /// </summary>
+        /// <param name="rawNames">Textbox data</param>
+        /// <returns></returns>
+        public static string[] specificNames(string rawNames)
+        {
+            string[] names = new string[rawNames.Length / 2];
+            char current = ' ';
+            int j = 0;
+            for (int i = 0; i < rawNames.Length; i++)
+            {
+                current = (char)rawNames[i];
+                //if not space
+                if (current != 32)
+                {
+                    //if needs to be initialized
+                    if (i == 0)
+                    {
+                        names[j] = char.ToString(current);
+                    }
+                    else
+                    {
+                        //add character to string
+                        names[j] += char.ToString(current);
+                    }
+                }
+                else
+                {
+                    j++;
+                }
+            }
+            return names;
+        }
+
+        /// <summary>
         /// Reutnrs array of strings with types to be left untouched
         /// </summary>
         /// <param name="files">All files in the main folder</param>

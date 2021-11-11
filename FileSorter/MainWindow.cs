@@ -72,11 +72,32 @@ namespace FileSorter
                 case "Simmilar name":
                     try
                     {
-                        var longestSubstr = CommonFileName.LongestSubstring(files, 3, 4);
-                        string folderPath = System.IO.Path.Combine(path, longestSubstr);
-                        System.IO.Directory.CreateDirectory(folderPath);
-                        sortCommonNames(files, folderPath, longestSubstr);
-                        progressBar.Value = 100;
+                        //If user has a specific name they want to search for
+                        if (fileNameTextBox.Text.Length > 0)
+                        {
+                            string[] specNames = specificNames(fileNameTextBox.Text);
+                            int progress = 80 / specNames.Length;
+                            foreach ( string name in specNames )
+                            {
+                                if (name == null)
+                                {
+                                    break;
+                                }
+                                string folderPath = System.IO.Path.Combine(path, name);
+                                System.IO.Directory.CreateDirectory(folderPath);
+                                sortCommonNames(files, folderPath, name);
+                                progressBar.Value += progress;
+                            }
+                            progressBar.Value = 100;
+                        }
+                        else
+                        {
+                            var longestSubstr = CommonFileName.LongestSubstring(files, 3, 4);
+                            string folderPath = System.IO.Path.Combine(path, longestSubstr);
+                            System.IO.Directory.CreateDirectory(folderPath);
+                            sortCommonNames(files, folderPath, longestSubstr);
+                            progressBar.Value = 100;
+                        }
 
                     }
                     catch (System.IO.DirectoryNotFoundException)
