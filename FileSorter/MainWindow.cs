@@ -69,7 +69,7 @@ namespace FileSorter
                         // TODO let the user know there is an error
                     }
                     break;
-                case "Simmilar name":
+                case "Similar name":
                     try
                     {
                         //If user has a specific name they want to search for
