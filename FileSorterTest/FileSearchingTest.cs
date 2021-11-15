@@ -143,6 +143,33 @@ namespace FileSorterTest
 
         }
 
+        [TestMethod]
+        public void TestSortCommonFileNames()
+        {
+            System.IO.FileInfo[] files = FileOperations.CollectFileInformation(testTarget);
+            string name = CommonFileName.LongestSubstring(files, 3, 4);     // present in 3 names, length at least 4
+            
+            var folderPath = System.IO.Path.Combine(testTarget.FullName, name);
+            System.IO.Directory.CreateDirectory(folderPath);
+            FileOperations.sortCommonNames(files, folderPath, name);
+
+            // get array of all subdirectories
+            System.IO.DirectoryInfo[] subDirs = testTarget.GetDirectories();
+
+            // folders that we expect it to create
+            string[] expectedFolders = { "EmptyText" };
+            HashSet<string> subdirNames = new();
+
+            // create a set of directory names
+            foreach (System.IO.DirectoryInfo dir in subDirs)
+            {
+                subdirNames.Add(dir.Name);
+            }
+
+            // test if all expected folders are present among the sub directories
+            Assert.IsTrue(subdirNames.IsSupersetOf(expectedFolders), "Not all expected folders are present");
+        }
+
         [TestCleanup]
         public void CleanUp()
         {

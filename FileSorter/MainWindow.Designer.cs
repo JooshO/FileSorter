@@ -49,10 +49,9 @@ namespace FileSorter
             // 
             // fileSelectButton
             // 
-            this.fileSelectButton.Location = new System.Drawing.Point(9, 275);
-            this.fileSelectButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fileSelectButton.Location = new System.Drawing.Point(10, 367);
             this.fileSelectButton.Name = "fileSelectButton";
-            this.fileSelectButton.Size = new System.Drawing.Size(135, 22);
+            this.fileSelectButton.Size = new System.Drawing.Size(154, 29);
             this.fileSelectButton.TabIndex = 0;
             this.fileSelectButton.Text = "select folder";
             this.fileSelectButton.UseVisualStyleBackColor = true;
@@ -60,19 +59,17 @@ namespace FileSorter
             // 
             // folderInputText
             // 
-            this.folderInputText.Location = new System.Drawing.Point(149, 275);
-            this.folderInputText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.folderInputText.Location = new System.Drawing.Point(170, 367);
             this.folderInputText.Name = "folderInputText";
-            this.folderInputText.Size = new System.Drawing.Size(361, 23);
+            this.folderInputText.Size = new System.Drawing.Size(412, 27);
             this.folderInputText.TabIndex = 1;
             this.folderInputText.TextChanged += new System.EventHandler(this.folderInputText_TextChanged);
             // 
             // sortButton
             // 
-            this.sortButton.Location = new System.Drawing.Point(515, 275);
-            this.sortButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.sortButton.Location = new System.Drawing.Point(589, 367);
             this.sortButton.Name = "sortButton";
-            this.sortButton.Size = new System.Drawing.Size(172, 22);
+            this.sortButton.Size = new System.Drawing.Size(197, 29);
             this.sortButton.TabIndex = 2;
             this.sortButton.Text = "Sort";
             this.sortButton.UseVisualStyleBackColor = true;
@@ -80,19 +77,18 @@ namespace FileSorter
             // 
             // safeTypeText
             // 
-            this.safeTypeText.Location = new System.Drawing.Point(118, 226);
-            this.safeTypeText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.safeTypeText.Location = new System.Drawing.Point(135, 301);
             this.safeTypeText.Name = "safeTypeText";
-            this.safeTypeText.Size = new System.Drawing.Size(305, 23);
+            this.safeTypeText.Size = new System.Drawing.Size(348, 27);
             this.safeTypeText.TabIndex = 3;
             this.safeTypeText.TextChanged += new System.EventHandler(this.safeTypesText_TextChanged);
             // 
             // safeTypeLabel
             // 
             this.safeTypeLabel.AutoSize = true;
-            this.safeTypeLabel.Location = new System.Drawing.Point(10, 226);
+            this.safeTypeLabel.Location = new System.Drawing.Point(11, 301);
             this.safeTypeLabel.Name = "safeTypeLabel";
-            this.safeTypeLabel.Size = new System.Drawing.Size(93, 15);
+            this.safeTypeLabel.Size = new System.Drawing.Size(117, 20);
             this.safeTypeLabel.TabIndex = 4;
             this.safeTypeLabel.Text = "Protected Types:";
             this.safeTypeLabel.Click += new System.EventHandler(this.label1_Click);
@@ -100,9 +96,10 @@ namespace FileSorter
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(622, 250);
+            this.checkBox1.Location = new System.Drawing.Point(711, 333);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(59, 19);
+            this.checkBox1.Size = new System.Drawing.Size(75, 24);
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "Delete";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -112,45 +109,42 @@ namespace FileSorter
             this.sortSelector.FormattingEnabled = true;
             this.sortSelector.Items.AddRange(new object[] {
             "File type",
-            "Simmilar name"});
-            this.sortSelector.Location = new System.Drawing.Point(11, 10);
-            this.sortSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            "Similar name"});
+            this.sortSelector.Location = new System.Drawing.Point(13, 13);
             this.sortSelector.Name = "sortSelector";
-            this.sortSelector.Size = new System.Drawing.Size(133, 23);
+            this.sortSelector.Size = new System.Drawing.Size(151, 28);
             this.sortSelector.TabIndex = 6;
             this.sortSelector.SelectedIndexChanged += new System.EventHandler(this.sortSelector_SelectedIndexChanged);
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(11, 309);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBar.Location = new System.Drawing.Point(13, 412);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(676, 22);
+            this.progressBar.Size = new System.Drawing.Size(773, 29);
             this.progressBar.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 250);
+            this.label1.Location = new System.Drawing.Point(13, 333);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 15);
+            this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 8;
             this.label1.Text = "Names to Sort:";
             // 
             // fileNameTextBox
             // 
-            this.fileNameTextBox.Location = new System.Drawing.Point(118, 250);
-            this.fileNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fileNameTextBox.Location = new System.Drawing.Point(135, 333);
             this.fileNameTextBox.Name = "fileNameTextBox";
-            this.fileNameTextBox.Size = new System.Drawing.Size(305, 23);
+            this.fileNameTextBox.Size = new System.Drawing.Size(348, 27);
             this.fileNameTextBox.TabIndex = 9;
             this.fileNameTextBox.TextChanged += new System.EventHandler(this.fileNameTextBox_TextChanged);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.fileNameTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar);
@@ -162,7 +156,6 @@ namespace FileSorter
             this.Controls.Add(this.folderInputText);
             this.Controls.Add(this.fileSelectButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainWindow_Load);
