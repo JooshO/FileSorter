@@ -41,6 +41,9 @@ namespace FileSorter
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.fileNameTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // folderSelector
@@ -51,7 +54,7 @@ namespace FileSorter
             // 
             this.fileSelectButton.Location = new System.Drawing.Point(10, 367);
             this.fileSelectButton.Name = "fileSelectButton";
-            this.fileSelectButton.Size = new System.Drawing.Size(154, 29);
+            this.fileSelectButton.Size = new System.Drawing.Size(110, 29);
             this.fileSelectButton.TabIndex = 0;
             this.fileSelectButton.Text = "select folder";
             this.fileSelectButton.UseVisualStyleBackColor = true;
@@ -59,17 +62,17 @@ namespace FileSorter
             // 
             // folderInputText
             // 
-            this.folderInputText.Location = new System.Drawing.Point(170, 367);
+            this.folderInputText.Location = new System.Drawing.Point(135, 367);
             this.folderInputText.Name = "folderInputText";
-            this.folderInputText.Size = new System.Drawing.Size(412, 27);
+            this.folderInputText.Size = new System.Drawing.Size(651, 27);
             this.folderInputText.TabIndex = 1;
             this.folderInputText.TextChanged += new System.EventHandler(this.folderInputText_TextChanged);
             // 
             // sortButton
             // 
-            this.sortButton.Location = new System.Drawing.Point(589, 367);
+            this.sortButton.Location = new System.Drawing.Point(695, 331);
             this.sortButton.Name = "sortButton";
-            this.sortButton.Size = new System.Drawing.Size(197, 29);
+            this.sortButton.Size = new System.Drawing.Size(93, 29);
             this.sortButton.TabIndex = 2;
             this.sortButton.Text = "Sort";
             this.sortButton.UseVisualStyleBackColor = true;
@@ -77,16 +80,16 @@ namespace FileSorter
             // 
             // safeTypeText
             // 
-            this.safeTypeText.Location = new System.Drawing.Point(135, 301);
+            this.safeTypeText.Location = new System.Drawing.Point(144, 257);
             this.safeTypeText.Name = "safeTypeText";
-            this.safeTypeText.Size = new System.Drawing.Size(348, 27);
+            this.safeTypeText.Size = new System.Drawing.Size(465, 27);
             this.safeTypeText.TabIndex = 3;
             this.safeTypeText.TextChanged += new System.EventHandler(this.safeTypesText_TextChanged);
             // 
             // safeTypeLabel
             // 
             this.safeTypeLabel.AutoSize = true;
-            this.safeTypeLabel.Location = new System.Drawing.Point(11, 301);
+            this.safeTypeLabel.Location = new System.Drawing.Point(10, 264);
             this.safeTypeLabel.Name = "safeTypeLabel";
             this.safeTypeLabel.Size = new System.Drawing.Size(117, 20);
             this.safeTypeLabel.TabIndex = 4;
@@ -96,7 +99,7 @@ namespace FileSorter
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(711, 333);
+            this.checkBox1.Location = new System.Drawing.Point(711, 13);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 24);
@@ -109,7 +112,7 @@ namespace FileSorter
             this.sortSelector.FormattingEnabled = true;
             this.sortSelector.Items.AddRange(new object[] {
             "File type",
-            "Similar name"});
+            "Simmilar name"});
             this.sortSelector.Location = new System.Drawing.Point(13, 13);
             this.sortSelector.Name = "sortSelector";
             this.sortSelector.Size = new System.Drawing.Size(151, 28);
@@ -126,7 +129,7 @@ namespace FileSorter
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 333);
+            this.label1.Location = new System.Drawing.Point(10, 331);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 8;
@@ -134,17 +137,47 @@ namespace FileSorter
             // 
             // fileNameTextBox
             // 
-            this.fileNameTextBox.Location = new System.Drawing.Point(135, 333);
+            this.fileNameTextBox.Location = new System.Drawing.Point(144, 324);
             this.fileNameTextBox.Name = "fileNameTextBox";
-            this.fileNameTextBox.Size = new System.Drawing.Size(348, 27);
+            this.fileNameTextBox.Size = new System.Drawing.Size(465, 27);
             this.fileNameTextBox.TabIndex = 9;
             this.fileNameTextBox.TextChanged += new System.EventHandler(this.fileNameTextBox_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 297);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Protected Names:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(144, 290);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(465, 27);
+            this.textBox1.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 227);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "File Age Limit:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.fileNameTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar);
@@ -177,6 +210,9 @@ namespace FileSorter
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox fileNameTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
