@@ -135,22 +135,12 @@ namespace FileSorter
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void sortSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
         private void fileNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
         {
 
         }

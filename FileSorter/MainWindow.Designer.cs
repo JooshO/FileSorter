@@ -94,7 +94,6 @@ namespace FileSorter
             this.safeTypeLabel.Size = new System.Drawing.Size(117, 20);
             this.safeTypeLabel.TabIndex = 4;
             this.safeTypeLabel.Text = "Protected Types:";
-            this.safeTypeLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // checkBox1
             // 
@@ -151,7 +150,6 @@ namespace FileSorter
             this.label2.Size = new System.Drawing.Size(126, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Protected Names:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox1
             // 
@@ -168,7 +166,6 @@ namespace FileSorter
             this.label3.Size = new System.Drawing.Size(103, 20);
             this.label3.TabIndex = 12;
             this.label3.Text = "File Age Limit:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // MainWindow
             // 
