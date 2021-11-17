@@ -22,6 +22,8 @@ namespace FileSorter
             folderInputText.Text = downloadsFilePath;
             //Set the Title of the Window
             this.Text = "File Sorter";
+
+            sortSelector.Text = "File type";
         }
 
         /// <summary>

@@ -282,6 +282,10 @@ namespace FileSorter
                 string newPath = System.IO.Path.Combine(pathToRoot, System.IO.Path.GetExtension(file.FullName));
                 newPath = System.IO.Path.Combine(newPath, file.Name);
                 int i = 0;
+
+                // block movement of .ini files which are often system files
+                if (file.Extension.Equals(".ini")) continue;
+
                 //check against protected types
                 while (i < protectedTypes.Length / 2 && prot[i] != null)
                 {
