@@ -181,6 +181,9 @@ namespace FileSorter
             {
                 if (!file.Name.Contains(commonStr)) continue;
 
+                // block movement of .ini files which are often system files
+                if (file.Extension.Equals(".ini")) continue;
+
                 //new path
                 string newPath = System.IO.Path.Combine(folderPath, file.Name);
                 file.MoveTo(newPath);
