@@ -62,8 +62,15 @@ namespace FileSorter
                 case "File type":
                     try
                     {
+                        //checks if the delete checkbox is checked or not
+                        bool dBool = false;
+                        if (checkBox1.Checked)
+                        {
+                            dBool = true;
+                        }
+
                         CreateFolders(files);
-                        sortTypes(files, safeTypeText.Text);
+                        sortTypes(files, safeTypeText.Text,dBool);
                         progressBar.Value = 100;
                     }
                     catch (System.IO.DirectoryNotFoundException)
@@ -141,6 +148,11 @@ namespace FileSorter
         }
 
         private void fileNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void remove_delete_folder_Click(object sender, EventArgs e)
         {
 
         }
