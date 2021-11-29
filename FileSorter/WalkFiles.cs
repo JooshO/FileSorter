@@ -133,6 +133,10 @@ namespace FileSorter
                 string folderPath = System.IO.Path.Combine(pathToRoot, str);
                 System.IO.Directory.CreateDirectory(folderPath);
             }
+
+            // Creates the to folder that will eventually be deleted
+            string path = System.IO.Path.Combine(pathToRoot, "to be deleted");
+            System.IO.Directory.CreateDirectory(path);
         }
 
         /// <summary>
@@ -270,10 +274,10 @@ namespace FileSorter
         /// </summary>
         /// <param name="files">All files in the main folder</param>
         /// <param name="protectedTypes">Files that are not to be touched</param>
-        public static void sortTypes(System.IO.FileInfo[] files, string protectedTypes )
+        /// <param name="deleteFiles">Moves files into the delete folder if True</param>
+        public static void sortTypes(System.IO.FileInfo[] files, string protectedTypes, bool deleteFiles)
         {
             string[] prot = protTypes(files, protectedTypes);
-
             // grab the path to the root folder from the first file
             string pathToRoot = files[0].DirectoryName;
             //sort through files
@@ -301,6 +305,27 @@ namespace FileSorter
                 }
                 if (canMove)
                 {
+
+                    // Checks if the file is to be deleted
+                    if (deleteFiles)
+                    {
+
+                        // Compares the duplicate files and moves them to the deleted folder
+                        foreach (string dFile in FindDuplicates(files))
+                        {
+                            if (string.Equals(dFile,file.Name))
+                            {
+                                string path = System.IO.Path.Combine(pathToRoot, "to be deleted");
+                                file.MoveTo(path);
+                            }
+                            else
+                            {
+                                file.MoveTo(newPath);
+                            }
+                            
+                        }
+                    }
+
                     //move file
                     file.MoveTo(newPath);
                 }
