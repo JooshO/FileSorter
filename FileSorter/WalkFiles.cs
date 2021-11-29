@@ -316,7 +316,7 @@ namespace FileSorter
                             if (string.Equals(dFile,file.Name))
                             {
                                 string path = System.IO.Path.Combine(pathToRoot, "to be deleted");
-                                file.MoveTo(path);
+                                file.MoveTo(System.IO.Path.Combine( path, dFile));
                             }
                             else
                             {
