@@ -53,7 +53,15 @@ namespace FileSorter
             string path = folderInputText.Text;
             System.IO.DirectoryInfo directory = new(path);
             string val = (string)sortSelector.SelectedItem;
-            var files = CollectFileInformation(directory);
+            System.IO.FileInfo[] files = null;
+            try
+            {
+                files = CollectFileInformation(directory);
+            } catch (System.IO.DirectoryNotFoundException)
+            {
+                errorProvider.SetError(folderInputText, "Invalid Directory");
+                return;
+            }
 
             progressBar.Value = 10;
 
