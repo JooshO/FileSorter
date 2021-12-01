@@ -81,7 +81,7 @@ namespace FileSorterTest
         public void TestCreateFolders()
         {
             // run method targeting our test folder
-            FileOperations.CreateFolders(FileOperations.CollectFileInformation(testTarget));
+            FileOperations.CreateFolders(FileOperations.CollectFileInformation(testTarget), "");
 
             // get array of all subdirectories
             System.IO.DirectoryInfo[] subDirs = testTarget.GetDirectories();
