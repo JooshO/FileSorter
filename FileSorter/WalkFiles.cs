@@ -77,33 +77,22 @@ namespace FileSorter
         /// <returns></returns>
         public static List<System.IO.FileInfo> FindFilesOlderThan(System.IO.FileInfo[] files, System.DateTime time, FindOldFilesBy mode)
         {
-            // declare the enumerable to store query results
-            IEnumerable<System.IO.FileInfo> queryOldFiles;
-
-            switch (mode)
+            IEnumerable<System.IO.FileInfo> queryOldFiles = mode switch
             {
-                case FindOldFilesBy.kLastModified:
-                    queryOldFiles = from file in files
-                                    where file.LastWriteTime.CompareTo(time) < 0
-                                    select file;
-                    break;
-                case FindOldFilesBy.kLastAccessed:
-                    queryOldFiles = from file in files
-                                    where file.LastAccessTime.CompareTo(time) < 0
-                                    select file;
-                    break;
-                case FindOldFilesBy.kCreationTime:
-                    queryOldFiles = from file in files
-                                    where file.CreationTime.CompareTo(time) < 0
-                                    select file;
-                    break;
+                FindOldFilesBy.kLastModified => from file in files
+                                                where file.LastWriteTime.CompareTo(time) < 0
+                                                select file,
+                FindOldFilesBy.kLastAccessed => from file in files
+                                                where file.LastAccessTime.CompareTo(time) < 0
+                                                select file,
+                FindOldFilesBy.kCreationTime => from file in files
+                                                where file.CreationTime.CompareTo(time) < 0
+                                                select file,
                 // default to time last modified
-                default:
-                    queryOldFiles = from file in files
-                                    where file.LastWriteTime.CompareTo(time) < 0
-                                    select file;
-                    break;
-            }
+                _ => from file in files
+                     where file.LastWriteTime.CompareTo(time) < 0
+                     select file,
+            };
 
             // convert to a list and return
             return queryOldFiles.ToList();
@@ -205,7 +194,7 @@ namespace FileSorter
         public static string[] specificNames(string rawNames)
         {
             string[] names = new string[rawNames.Length / 2];
-            char current = ' ';
+            char current;
             int j = 0;
             for (int i = 0; i < rawNames.Length; i++)
             {
@@ -238,11 +227,11 @@ namespace FileSorter
         /// <param name="files">All files in the main folder</param>
         /// <param name="protTypes">Files that are not to be touched</param>
         /// <returns> Array of string to be left untouched by file sorter </returns>
-        public static string[] protTypes(System.IO.FileInfo[] files, string protTypes) 
+        public static string[] protTypes(string protTypes) 
         {
             //Sort through protected types
             string[] prot = new string[protTypes.Length / 2];
-            char current = ' ';
+            char current;
             int j = 0;
             for (int i = 0; i < protTypes.Length; i++)
             {
@@ -277,7 +266,7 @@ namespace FileSorter
         /// <param name="deleteFiles">Moves files into the delete folder if True</param>
         public static void sortTypes(System.IO.FileInfo[] files, string protectedTypes, bool deleteFiles)
         {
-            string[] prot = protTypes(files, protectedTypes);
+            string[] prot = protTypes(protectedTypes);
             // grab the path to the root folder from the first file
             string pathToRoot = files[0].DirectoryName;
             //sort through files

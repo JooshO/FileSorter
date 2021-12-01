@@ -53,7 +53,7 @@ namespace FileSorter
             string path = folderInputText.Text;
             System.IO.DirectoryInfo directory = new(path);
             string val = (string)sortSelector.SelectedItem;
-            System.IO.FileInfo[] files = null;
+            System.IO.FileInfo[] files;
             try
             {
                 files = CollectFileInformation(directory);

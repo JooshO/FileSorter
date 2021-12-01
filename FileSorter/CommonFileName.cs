@@ -42,7 +42,7 @@ namespace FileSorter
         {
             // if k is greater than the number of elements in the list, set k equal to the count
             // this way we don't overshoot the list
-            k = k > list.Count() ? list.Count : k;
+            k = k > list.Count ? list.Count : k;
          
             // get all substrings of all elements
             // yes it's ineffecient
