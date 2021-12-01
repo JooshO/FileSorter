@@ -77,7 +77,6 @@ namespace FileSorter
                             dBool = true;
                         }
 
-                        CreateFolders(files);
                         sortTypes(files, safeTypeText.Text,dBool);
                         progressBar.Value = 100;
                     }

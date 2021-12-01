@@ -102,10 +102,15 @@ namespace FileSorter
         /// Creates a folder for every file type present 
         /// </summary>
         /// <param name="files">All files in the main folder</param>
-        public static void CreateFolders(System.IO.FileInfo[] files)
+        public static void CreateFolders(System.IO.FileInfo[] files, string protectedTypes)
         {
+            if (files.Length == 0) throw new System.Exception("Empty folder");
+
+
             // grab the path to the root folder from the first file
             string pathToRoot = files[0].DirectoryName;
+
+            string[] prot = protTypes(protectedTypes);
 
             // Create a HashSet for folder types so we only track one of each file type
             HashSet<string> extensions = new();
@@ -113,7 +118,11 @@ namespace FileSorter
             // add file extensions to the set
             foreach(System.IO.FileInfo file in files)
             {
-                extensions.Add(System.IO.Path.GetExtension(file.FullName));
+                string extension = System.IO.Path.GetExtension(file.FullName);
+                if (!prot.Contains(extension))
+                {
+                    extensions.Add(extension);
+                }
             }
             
             // for each file extension / type create a folder
@@ -267,8 +276,20 @@ namespace FileSorter
         public static void sortTypes(System.IO.FileInfo[] files, string protectedTypes, bool deleteFiles)
         {
             string[] prot = protTypes(protectedTypes);
+
+            try
+            {
+                CreateFolders(files, protectedTypes);
+            } catch (System.Exception e)
+            {
+                // if there is an error, including and especially an empty directory, return out
+                System.Console.WriteLine(e.Message + " | " + e.StackTrace);
+                return;
+            }
+
             // grab the path to the root folder from the first file
             string pathToRoot = files[0].DirectoryName;
+
             //sort through files
             foreach (System.IO.FileInfo file in files)
             {
@@ -280,7 +301,7 @@ namespace FileSorter
                 int i = 0;
 
                 // block movement of .ini files which are often system files
-                if (file.Extension.Equals(".ini")) continue;
+                if (file.Extension.Equals("ini")) continue;
 
                 //check against protected types
                 while (i < protectedTypes.Length / 2 && prot[i] != null)
