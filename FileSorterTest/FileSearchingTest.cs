@@ -151,7 +151,7 @@ namespace FileSorterTest
             
             var folderPath = System.IO.Path.Combine(testTarget.FullName, name);
             System.IO.Directory.CreateDirectory(folderPath);
-            FileOperations.sortCommonNames(files, folderPath, name);
+            FileOperations.sortCommonNames(files, folderPath, name, null);
 
             // get array of all subdirectories
             System.IO.DirectoryInfo[] subDirs = testTarget.GetDirectories();
