@@ -182,7 +182,7 @@ namespace FileSorter
             foreach (System.IO.FileInfo file in files)
             {
                 //If protNames has elements
-                if (protNames.Length > 0)
+                if (protNames != null && protNames.Length > 0)
                 {
                     bool match = false;
                     int k = 0;
