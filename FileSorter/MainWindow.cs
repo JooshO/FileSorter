@@ -88,10 +88,12 @@ namespace FileSorter
                 case "Similar name":
                     try
                     {
+                        string[] protNames = specificNames(safeNamesText.Text);
                         //If user has a specific name they want to search for
                         if (fileNameTextBox.Text.Length > 0)
                         {
                             string[] specNames = specificNames(fileNameTextBox.Text);
+                            
                             int progress = 80 / specNames.Length;
                             foreach ( string name in specNames )
                             {
@@ -101,7 +103,7 @@ namespace FileSorter
                                 }
                                 string folderPath = System.IO.Path.Combine(path, name);
                                 System.IO.Directory.CreateDirectory(folderPath);
-                                sortCommonNames(files, folderPath, name);
+                                sortCommonNames(files, folderPath, name, protNames);
                                 progressBar.Value += progress;
                             }
                             progressBar.Value = 100;
@@ -111,7 +113,7 @@ namespace FileSorter
                             var longestSubstr = CommonFileName.LongestSubstring(files, 3, 4);
                             string folderPath = System.IO.Path.Combine(path, longestSubstr);
                             System.IO.Directory.CreateDirectory(folderPath);
-                            sortCommonNames(files, folderPath, longestSubstr);
+                            sortCommonNames(files, folderPath, longestSubstr, protNames);
                             progressBar.Value = 100;
                         }
 
@@ -160,6 +162,11 @@ namespace FileSorter
         }
 
         private void remove_delete_folder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void safeNamesTextBox(object sender, EventArgs e)
         {
 
         }

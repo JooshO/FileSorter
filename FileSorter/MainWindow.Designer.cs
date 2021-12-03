@@ -29,7 +29,6 @@ namespace FileSorter
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.folderSelector = new System.Windows.Forms.FolderBrowserDialog();
             this.fileSelectButton = new System.Windows.Forms.Button();
@@ -43,11 +42,8 @@ namespace FileSorter
             this.label1 = new System.Windows.Forms.Label();
             this.fileNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.safeNamesText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // folderSelector
@@ -109,6 +105,7 @@ namespace FileSorter
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "Delete";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.remove_delete_folder_Click);
             // 
             // sortSelector
             // 
@@ -155,12 +152,13 @@ namespace FileSorter
             this.label2.TabIndex = 10;
             this.label2.Text = "Protected Names:";
             // 
-            // textBox1
+            // safeNamesText
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 291);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(465, 27);
-            this.textBox1.TabIndex = 11;
+            this.safeNamesText.Location = new System.Drawing.Point(144, 290);
+            this.safeNamesText.Name = "safeNamesText";
+            this.safeNamesText.Size = new System.Drawing.Size(465, 27);
+            this.safeNamesText.TabIndex = 11;
+            this.safeNamesText.TextChanged += new System.EventHandler(this.safeNamesTextBox);
             // 
             // label3
             // 
@@ -171,28 +169,13 @@ namespace FileSorter
             this.label3.TabIndex = 12;
             this.label3.Text = "File Age Limit:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(584, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 31);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Remove Files";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.safeNamesText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.fileNameTextBox);
             this.Controls.Add(this.label1);
@@ -208,7 +191,6 @@ namespace FileSorter
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,7 +210,7 @@ namespace FileSorter
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox fileNameTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox safeNamesText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorProvider;

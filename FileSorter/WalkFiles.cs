@@ -175,12 +175,32 @@ namespace FileSorter
             return duplicates;
         }
 
-        public static int sortCommonNames(System.IO.FileInfo[] files, string folderPath, string commonStr)
+        public static int sortCommonNames(System.IO.FileInfo[] files, string folderPath, string commonStr, string[] protNames)
         {
             int i = 0;
             //sort through files
             foreach (System.IO.FileInfo file in files)
             {
+                //If protNames has elements
+                if (protNames.Length > 0)
+                {
+                    bool match = false;
+                    int k = 0;
+                    //Search through prot names
+                    while (protNames[k] != null)
+                    {
+                        //If protNames matches
+                        if (protNames[k] != null && file.Name.Contains(protNames[k]))
+                        {
+                            match = true;
+                            break;
+                        }
+                        k++;
+                    }
+                    //Skip this file
+                    if (match) continue;
+                }
+
                 if (!file.Name.Contains(commonStr)) continue;
 
                 // block movement of .ini files which are often system files
