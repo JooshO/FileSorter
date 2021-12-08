@@ -339,25 +339,29 @@ namespace FileSorter
                     // Checks if the file is to be deleted
                     if (deleteFiles)
                     {
-
+                        bool dCheck = false;
                         // Compares the duplicate files and moves them to the deleted folder
                         foreach (string dFile in FindDuplicates(files))
                         {
-                            if (string.Equals(dFile,file.Name))
+                            if (string.Equals(dFile, file.Name))
                             {
                                 string path = System.IO.Path.Combine(pathToRoot, "to be deleted");
-                                file.MoveTo(System.IO.Path.Combine( path, dFile));
+                                //path = System.IO.Path.Combine(newPath, file.Name);
+                                dCheck = true;
+                                file.MoveTo(System.IO.Path.Combine(path, file.Name));
+                                continue;
                             }
-                            else
-                            {
-                                file.MoveTo(newPath);
-                            }
-                            
+                        }
+                        if (dCheck == false)
+                        {
+                            file.MoveTo(newPath);
                         }
                     }
-
-                    //move file
-                    file.MoveTo(newPath);
+                    else
+                    { 
+                        //move file
+                        file.MoveTo(newPath);
+                    }
                 }
 
             }
