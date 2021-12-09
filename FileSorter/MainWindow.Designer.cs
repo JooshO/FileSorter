@@ -44,6 +44,7 @@ namespace FileSorter
             this.label2 = new System.Windows.Forms.Label();
             this.safeNamesText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // folderSelector
@@ -169,11 +170,19 @@ namespace FileSorter
             this.label3.TabIndex = 12;
             this.label3.Text = "File Age Limit:";
             // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(144, 227);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(250, 27);
+            this.dateTimePicker.TabIndex = 13;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.safeNamesText);
             this.Controls.Add(this.label2);
@@ -214,6 +223,7 @@ namespace FileSorter
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }
 
